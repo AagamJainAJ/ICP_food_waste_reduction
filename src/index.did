@@ -1,0 +1,28 @@
+type FoodItem = record {
+  id : text;
+  ownerId : principal;
+  name : text;
+  createdAt : nat64;
+  updatedAt : opt nat64;
+  expirationDate : nat64;
+  quantity : float64;
+};
+type FoodItemPayload = record {
+  name : text;
+  expirationDate : nat64;
+  quantity : float64;
+};
+type _AzleResult = variant { Ok : FoodItem; Err : text };
+type _AzleResult_1 = variant { Ok : vec FoodItem; Err : text };
+service : () -> {
+  createFoodItem : (FoodItemPayload) -> (_AzleResult);
+  deleteFoodItem : (text) -> (_AzleResult);
+  getAllFoodItems : () -> (_AzleResult_1) query;
+  getAllSharedFoodItems : () -> (_AzleResult_1) query;
+  getFoodItemById : (text) -> (_AzleResult) query;
+  getFoodItemsByName : (text) -> (_AzleResult_1) query;
+  getFoodItemsByQuantity : (float64, float64) -> (_AzleResult_1) query;
+  shareExcessFood : (text) -> (_AzleResult);
+  updateFoodItem : (text, FoodItemPayload) -> (_AzleResult);
+  updateFoodItemQuantity : (text, float64) -> (_AzleResult);
+}

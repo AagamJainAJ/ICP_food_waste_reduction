@@ -1,0 +1,13 @@
+{
+  "canisters": {
+      "ICP_Food_Waste_Reduction": {
+          "type": "custom",
+          "build": "npx azle ICP_Food_Waste_Reduction",
+          "root": "src",
+          "ts": "src/index.ts",
+          "candid": "src/index.did",
+          "wasm": ".azle/ICP_Food_Waste_Reduction/ICP_Food_Waste_Reduction.wasm.gz"
+      }
+  }
+}
+
