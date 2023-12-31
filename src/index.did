@@ -5,12 +5,12 @@ type FoodItem = record {
   createdAt : nat64;
   updatedAt : opt nat64;
   expirationDate : nat64;
-  quantity : float64;
+  quantity : nat;
 };
 type FoodItemPayload = record {
   name : text;
   expirationDate : nat64;
-  quantity : float64;
+  quantity : nat;
 };
 type _AzleResult = variant { Ok : FoodItem; Err : text };
 type _AzleResult_1 = variant { Ok : vec FoodItem; Err : text };
@@ -24,5 +24,5 @@ service : () -> {
   getFoodItemsByQuantity : (float64, float64) -> (_AzleResult_1) query;
   shareExcessFood : (text) -> (_AzleResult);
   updateFoodItem : (text, FoodItemPayload) -> (_AzleResult);
-  updateFoodItemQuantity : (text, float64) -> (_AzleResult);
+  updateFoodItemQuantity : (text, nat) -> (_AzleResult);
 }
